@@ -1,6 +1,6 @@
 {
-  "name": "@reusejs/react-native-buttons",
-  "version": "0.0.3",
+  "name": "@reusejs/react-native-pickerss",
+  "version": "0.0.1",
   "description": "A library which works as a base to build react components and push to npm",
   "main": "build/index.js",
   "files": [
@@ -8,12 +8,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reusejs/react-native-buttons.git"
+    "url": "git+https://github.com/reusejs/react-native-pickerss.git"
   },
   "bugs": {
-    "url": "https://github.com/reusejs/react-native-buttons/issues"
+    "url": "https://github.com/reusejs/react-native-pickerss/issues"
   },
-  "homepage": "https://github.com/reusejs/react-native-buttons",
+  "homepage": "https://github.com/reusejs/react-native-pickerss",
   "author": "Rajiv Seelam",
   "license": "MIT",
   "scripts": {
