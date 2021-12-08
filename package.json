@@ -67,5 +67,9 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "dependencies": {
+    "@heroicons/react": "^1.0.5",
+    "react-native-svg": "^12.1.1"
   }
 }
