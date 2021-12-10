@@ -1,5 +1,5 @@
-import Base from './Base';
-import Blue from './Blue';
-import Outline from './Outline';
+import Checkbox from './Checkbox';
+import Radio from './Radio';
+// import Select from './Select';
 
-export {Base, Blue, Outline};
+export {Checkbox, Radio};

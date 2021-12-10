@@ -5,9 +5,9 @@ import commonjs from 'rollup-plugin-commonjs';
 export default {
   input: [
     'src/index.js',
-    'src/Base/index.js',
-    'src/Blue/index.js',
-    'src/Outline/index.js',
+    'src/Checkbox/index.js',
+    'src/Radio/index.js',
+    'src/Select/index.js',
   ],
   output: [
     {
