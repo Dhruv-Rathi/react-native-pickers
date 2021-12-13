@@ -1,8 +1,17 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {View, TextInput, Text, TouchableOpacity} from 'react-native';
+import {
+  View,
+  TextInput,
+  Text,
+  TouchableOpacity,
+  TouchableHighlight,
+} from 'react-native';
 import CheckBox from './base';
-import {CheckIcon} from '../icons';
-
+import CheckIcon from '../../assets/check';
+import BoxIcon from '../../assets/box';
+import CircleIcon from '../../assets/circle';
+import CrossIcon from '../../assets/cross';
 export default function (props) {
   return (
     <CheckBox
@@ -24,20 +33,26 @@ const OptionsRenderer = ({value, selected, props}) => {
   }, [selected, value.value]);
 
   return (
-    <View>
-      {/* <View>
-        <TextInput
-          id={value.value}
-          name={props.name}
-          type="checkbox"
-          // style={{}}
-          checked={found === true}
-          onChange={() => {}}
-        />
-      </View> */}
-      <View>
+    <View style={{flexDirection: 'row'}}>
+      <TouchableOpacity
+        id={value.value}
+        name={props.name}
+        style={{
+          borderColor: '#000',
+          padding: 2,
+          height: 20,
+          borderRadius: 5,
+          backgroundColor: '#fff',
+          width: 20,
+          borderWidth: 1,
+          marginHorizontal: 4,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+        onChange={() => {}}>
         <CheckIcon />
-      </View>
+      </TouchableOpacity>
+
       <View
         style={{
           flexDirection: 'row',
@@ -67,7 +82,7 @@ const SearchRenderer = ({query, onSearch, cancelSearch}) => {
           onPress={() => {
             cancelSearch();
           }}>
-          {/* <XIcon style={{width: 5, height: 5}} /> */}
+          <XIcon style={{width: 5, height: 5}} />
         </Text>
       </Text>
     </View>

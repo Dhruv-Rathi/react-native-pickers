@@ -1,7 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
 import {View, TextInput, Text, TouchableOpacity} from 'react-native';
 import CheckBox from './base';
-import {CheckIcon} from '../icons/check';
+import CheckIcon from '../../assets/check';
 
 export default function (props) {
   return (
@@ -24,20 +25,25 @@ const OptionsRenderer = ({value, selected, props}) => {
   }, [selected, value.value]);
 
   return (
-    <View>
-      {/* <View>
-        <TextInput
-          id={value.value}
-          name={props.name}
-          type="checkbox"
-          // style={{}}
-          checked={found === true}
-          onChange={() => {}}
-        />
-      </View> */}
-      <View>
-        <CheckIcon />
-      </View>
+    <View style={{flexDirection: 'row'}}>
+      <TouchableOpacity
+        id={value.value}
+        name={props.name}
+        onChange={() => {}}
+        // onPress={setFound(true)}
+        style={{
+          borderColor: '#000',
+          padding: 2,
+          height: 20,
+          borderRadius: 15,
+          backgroundColor: found ? '#0000FF' : '#fff',
+          width: 20,
+          borderWidth: 1,
+          marginHorizontal: 4,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      />
       <View
         style={{
           flexDirection: 'row',

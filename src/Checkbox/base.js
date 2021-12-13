@@ -1,6 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
 import {View, Pressable, Text, SafeAreaView, TextInput} from 'react-native';
-import {CheckIcon} from '../icons';
+import CheckIcon from '../../assets/check';
+import CrossIcon from '../../assets/cross';
 import useSearchSelect from '../useSearchSelect';
 
 const Index = ({
@@ -23,13 +25,6 @@ const Index = ({
     dataSource,
     defaultSelected,
   );
-  const textStyles = {
-    ...(props.textStyles || {
-      fontWeight: 'bold',
-      color: props.textColor || '#000',
-      letterSpacing: 0,
-    }),
-  };
 
   return (
     <View
@@ -44,13 +39,10 @@ const Index = ({
             marginRight: 12,
             marginBottom: 7,
           }}>
-          <Text style={textStyles}>{label}</Text>
+          <Text>{label}</Text>
           <View style={{marginLeft: 12}}>{icon}</View>
         </View>
       )}
-      <View>
-        <CheckIcon />
-      </View>
       <View style={{...props.pickerWrapperStyles}}>
         <View style={{...props.optionsWrapperStyles}}>
           {options.length > 0 && (
