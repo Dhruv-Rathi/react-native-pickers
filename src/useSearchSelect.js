@@ -22,6 +22,7 @@ export default function (
   };
 
   useEffect(() => {
+    console.log('Refresh changed', refresh);
     onTyping();
   }, [refresh]);
 
@@ -30,12 +31,10 @@ export default function (
   }, [defaultSelected.length]);
 
   useEffect(() => {
-    if (query !== '') {
-      const debounceTimer = setTimeout(() => {
-        onTyping(query);
-      }, 200);
-      return () => clearTimeout(debounceTimer);
-    }
+    const debounceTimer = setTimeout(() => {
+      onTyping(query);
+    }, 200);
+    return () => clearTimeout(debounceTimer);
   }, [query]);
 
   const addOrRemove = (multiple, option) => {

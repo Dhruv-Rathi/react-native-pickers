@@ -34,7 +34,7 @@ const OptionsRenderer = ({value, selected, props}) => {
 
   return (
     <View style={{flexDirection: 'row'}}>
-      <TouchableOpacity
+      <View
         id={value.value}
         name={props.name}
         style={{
@@ -47,11 +47,11 @@ const OptionsRenderer = ({value, selected, props}) => {
           borderWidth: 1,
           marginHorizontal: 4,
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
         onChange={() => {}}>
-        <CheckIcon />
-      </TouchableOpacity>
+        {found && <CheckIcon />}
+      </View>
 
       <View
         style={{
