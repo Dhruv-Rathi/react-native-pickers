@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
-import {View, TextInput, Text, TouchableOpacity} from 'react-native';
+import {View, TextInput, Text, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import SelectBase from './base';
-
+import CrossIcon from '../../assets/cross';
+import CheckIcon from '../../assets/check';
 export default function (props) {
   return (
     <SelectBase
@@ -20,33 +21,26 @@ const OptionsRenderer = ({value, selected}) => {
   useEffect(() => {
     let localFound = selected.some(current => current.value === value.value);
     setFound(localFound === false ? false : true);
-  }, [selected]);
+  }, [selected, value.value]);
 
   return (
-    <View>
-      {/* <View>
-        <TextInput
-          id={value.value}
-          name={props.name}
-          type="checkbox"
-          // style={{}}
-          checked={found === true}
-          onChange={() => {}}
-        />
-      </View> */}
-      {/* <View>
-        <CheckIcon />
-      </View> */}
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginRight: 12,
-          marginBottom: 7,
-        }}>
+    <TouchableOpacity>
+      <View>
+        {value.avatar && (
+          <Image
+            style={{height: 4, marginRight: 2}}
+            src={value.avatar}
+            alt={value.label}
+          />
+        )}
         <Text>{value.label}</Text>
       </View>
-    </View>
+      {found === true && (
+        <View>
+          <CheckIcon />
+        </View>
+      )}
+    </TouchableOpacity>
   );
 };
 
@@ -60,15 +54,13 @@ const SearchRenderer = ({query, onSearch, cancelSearch}) => {
           onSearch(e);
         }}
       />
-      <Text>
-        <Text
-          style={{position: 'absolute'}}
-          onPress={() => {
-            cancelSearch();
-          }}>
-          {/* <XIcon style={{width: 5, height: 5}} /> */}
-        </Text>
-      </Text>
+      <View
+        style={{position: 'absolute'}}
+        onPress={() => {
+          cancelSearch();
+        }}>
+        <CrossIcon style={{width: 5, height: 5}} />
+      </View>
     </View>
   );
 };

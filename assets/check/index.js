@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-export default function ({stroke = '#2CD6E2', ...props}) {
+const CheckIcon = ({stroke = '#2CD6E2', ...props}) => {
   return (
     <Svg
-      width={13}
-      height={11}
+      width={20}
+      height={20}
       viewBox="0 0 13 11"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -19,4 +19,6 @@ export default function ({stroke = '#2CD6E2', ...props}) {
       />
     </Svg>
   );
-}
+};
+
+export default CheckIcon;

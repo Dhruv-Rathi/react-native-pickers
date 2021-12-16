@@ -1,7 +1,8 @@
 import React from 'react';
 import useSearchSelect from '../useSearchSelect';
 import {View, Text} from 'react-native';
-
+import ArrowDownIcon from '../../assets/downArrow';
+import useOutsideClicker from '../useOutsideClicker';
 const LabelCloseComponent = () => {
   return 'Close';
 };
@@ -10,7 +11,11 @@ const LabelClearComponent = () => {
 };
 
 const NoDataComponent = () => {
-  return <View>No Data</View>;
+  return (
+    <View>
+      <Text>No Data</Text>
+    </View>
+  );
 };
 
 const Index = ({
@@ -51,13 +56,9 @@ const Index = ({
     refresh,
   );
 
-  const textStyles = {
-    ...(props.textStyles || {
-      fontWeight: 'bold',
-      color: props.textColor || '#000',
-      letterSpacing: 0,
-    }),
-  };
+  const visRef = useOutsideClicker(() => {
+    setOpen(false);
+  });
 
   return (
     <View style={{...props.componentWrapperStyles}}>
@@ -69,7 +70,7 @@ const Index = ({
             marginRight: 12,
             marginBottom: 7,
           }}>
-          <Text style={textStyles}>{label}</Text>
+          <Text>{label}</Text>
         </View>
       )}
       {selected.length > 0 && !open && (
@@ -89,16 +90,20 @@ const Index = ({
 
       <View>
         {open === false && (
-          <View onPress={() => setOpen(true)}>
-            <SelectedDataRenderer selected={selected} />
-            {/* {props.suffixIcon || (
-                      <Text><ArrowIcon /></Text>
-                  )} */}
+          <View onPress={() => setOpen(true)} style={{flexDirection: 'row'}}>
+            <Text>
+              <SelectedDataRenderer selected={selected} />
+            </Text>
+            {props.suffixIcon || (
+              <View>
+                <ArrowDownIcon />
+              </View>
+            )}
           </View>
         )}
         {open === false && errorText !== '' && <Text>{errorText}</Text>}
         {open === true && (
-          <View>
+          <View style={{position: 'relative'}} ref={visRef}>
             <SearchRenderer
               query={query}
               onSearch={v => {
