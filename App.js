@@ -47,7 +47,7 @@ const App = () => {
     <ScrollView>
       <View style={{marginVertical: 10, marginHorizontal: 100, flex: 1}}>
         <View style={{marginBottom: 20}}>
-          <Text style={{fontWeight: 'bold'}}>CheckBox Picker</Text>
+          <Text style={{fontWeight: 'bold'}}>CheckBox Multiple Picker</Text>
           <Checkbox
             label="Select Continent"
             dataSource={q => {
@@ -57,10 +57,11 @@ const App = () => {
               console.log(v);
             }}
             name="continent"
+            multiple="true"
           />
         </View>
         <View style={{marginVertical: 40}}>
-          <Text style={{fontWeight: 'bold'}}>Radio Picker</Text>
+          <Text style={{fontWeight: 'bold'}}>Radio Single Picker</Text>
           <Radio
             label="Select Continent"
             dataSource={q => {
@@ -70,6 +71,7 @@ const App = () => {
               console.log(v);
             }}
             name="continent"
+            // multiple="true"
           />
         </View>
         <View>
