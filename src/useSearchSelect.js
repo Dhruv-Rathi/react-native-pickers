@@ -4,24 +4,23 @@ export default function (
   onChange,
   dataSource,
   defaultSelected = [],
-  refresh = '',
+  valueKey = 'value',
   defaultOpen = false,
   defaultQuery = '',
+  refresh = '',
 ) {
   const [open, setOpen] = useState(defaultOpen);
   const [query, setQuery] = useState(defaultQuery);
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState(defaultSelected);
-  const [loading, setLoading] = useState(false);
 
-  const onTyping = async (query, force = false) => {
-    setLoading(true);
+  const onTyping = async query => {
     let dropdownOptions = await dataSource(query);
     setOptions(dropdownOptions);
-    setLoading(false);
   };
 
   useEffect(() => {
+    console.log('Refresh changed', refresh);
     onTyping();
   }, [refresh]);
 
@@ -30,12 +29,10 @@ export default function (
   }, [defaultSelected.length]);
 
   useEffect(() => {
-    if (query !== '') {
-      const debounceTimer = setTimeout(() => {
-        onTyping(query);
-      }, 200);
-      return () => clearTimeout(debounceTimer);
-    }
+    const debounceTimer = setTimeout(() => {
+      onTyping(query);
+    }, 200);
+    return () => clearTimeout(debounceTimer);
   }, [query]);
 
   const addOrRemove = (multiple, option) => {
@@ -44,7 +41,7 @@ export default function (
       onChange(option);
       setOpen(false);
     } else {
-      if (!selected.some(current => current.value === option.value)) {
+      if (!selected.some(current => current[valueKey] === option[valueKey])) {
         if (multiple) {
           onChange([...selected, option]);
           setSelected([...selected, option]);
@@ -53,7 +50,7 @@ export default function (
         let selectionAfterRemoval = selected;
 
         selectionAfterRemoval = selectionAfterRemoval.filter(
-          current => current.value !== option.value,
+          current => current[valueKey] !== option[valueKey],
         );
         onChange([...selectionAfterRemoval]);
         setSelected([...selectionAfterRemoval]);
@@ -71,6 +68,5 @@ export default function (
     selected,
     setSelected,
     addOrRemove,
-    loading,
   };
 }

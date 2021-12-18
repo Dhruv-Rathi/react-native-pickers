@@ -48,7 +48,7 @@ const Index = ({
           {options.length > 0 && (
             <>
               {options.map(option => (
-                <View
+                <Pressable
                   onPress={() => {
                     addOrRemove(multiple, option);
                   }}
@@ -58,7 +58,7 @@ const Index = ({
                     selected={selected}
                     props={props}
                   />
-                </View>
+                </Pressable>
               ))}
             </>
           )}
